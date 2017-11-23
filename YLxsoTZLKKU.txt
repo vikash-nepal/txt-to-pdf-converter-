@@ -1,0 +1,218 @@
+Welcome to the third course in the Foundations of Software Development.
+This course is titled Algorithms in Data Structures.
+So let's ask first what is an algorithm?
+Before I ask that, let me ask where did the word algorithm come from?
+So the word dates back to an 800th AD Persian mathematician,
+al-Khwarizmi who wrote a treatise on how to solve quadratic equations and
+linear systems of equations and
+popularized the idea of the Hindu-Arabic numeral system that includes the zero.
+Now of course, algorithms actually predate even al-Khwarizmi.
+Probably the most famous and
+most classical ancient algorithm dates back to about 300 BC,
+full 1100 years before al-Khwarizmi, when the Greek mathematician that you
+all have heard of I'm sure, Euclid, came up with the very first algorithm.
+Euclid is better known for inventing or being called the father of geometry, but
+he also designed a really beautiful and efficient algorithm for
+finding the greatest common divisor of two integers.
+This algorithm continues to be
+the best possible way of finding the greatest common divisor to this day.
+And is used in the cryptographic systems, for example,
+that insure the security of your credit card transactions online.
+So you might wonder, why should we study algorithms when you're already learning
+programming and you're understanding the syntax of a programming language?
+Stripping away that syntax and thinking abstractly, allows you to understand and
+reason about more complex programming and computational tasks.
+One thing we need to do when we design complex programs is to manage
+data structures that have
+data arranged in very specific ways to allow easy access for certain operations.
+We also have to be clever in order to be efficient so
+that we don't spend all our time finding the solution to a problem.
+And when we're trying to be clever and
+use complex data, we're often liable to make mistakes.
+So thinking about things abstractly from the algorithm's point of view,
+allows you to reason about whether your logic is correct.
+And how fast the algorithm is going to be before you actually code it up in
+a program.
+This is one of the main reasons to study algorithms.
+The other reason to study algorithms is that once we start thinking abstractly,
+we notice commonalities between many different problems.
+The same algorithmic techniques are used to solve one problem and another problem.
+When you start seeing these commonalities,
+you then can identify a tool kit of ways of designing algorithms.
+So that when you're confronted with a new computational problem,
+you no longer have to think from scratch.
+You will use your tool kit, to figure out if any of the ideas you've
+already learned might apply to this problem.
+A fundamental idea in algorithm design, and this is a fundamental design
+in all of computer science, is that to solve a bigger problem,
+you try to use the fact that you know how to solve smaller problems, and
+boot strap your way to solving bigger and bigger problems.
+So this can be done in two ways.
+One way is you take a big problem, you do a few operations on the input that
+you're given, and suddenly you find that you've reduced your input by a little bit.
+When that happens you can then of course keep doing this until the input is reduced
+to such a small size that you of course know how to solve the problem already.
+So that's kind of a top down view to take the big problem,
+do a bit of reduction and get to a slightly smaller problem and
+continue this way until you get to a really small problem.
+Well, once you know that this is possible, you can also do this
+in a bottom-up manner, where what you do is you solve the smallest problem first.
+Then you solve the slightly bigger problem and
+a slightly bigger problem, until you're solving the problem you want to solve.
+So of course, this sounds very abstract.
+I'm gonna illustrate this for you by two examples.
+So, the first example is the Towers of Hanoi, which you might have all heard of.
+The story goes that in a temple in Thailand,
+there are three pegs as shown in the figure here.
+And one of the pegs contains 64 disks of decreasing size,
+with the largest disk at the bottom and the smallest disk at the top.
+There are Buddhist monks who are trying to move all the disks on one peg
+to another peg, say to the third peg.
+But the rules that they have to follow are, they can move only one disk at
+a time, and they can never put a bigger disk on top of a smaller disk.
+And the story goes that when the Buddhist monks have completed this task of moving
+all 64 disks from the first peg to the third peg, the world will come to an end.
+So how do we go about solving this problem, the Towers of Hanoi?
+Well, we can think recursively that if you wanna solve the problem on 64 disks,
+let's reduce it to solving the problem on 63 disks.
+Let's see how that could be done.
+So if you could solve the problem with 63 disks, and
+don't ask me how, we'll figure that out later.
+We could imagine moving 63 of the disks from the first peg
+to the second peg using the way we figured out for solving the problem on 63 disks.
+Once we've done that,
+we are free to move the largest disk from peg one to peg three as like so.
+And after we've done that, we again have simply to solve the problem of moving 63
+disks from the second peg to the third peg which we know how to do and
+once we've done that, we've completed the task.
+So again, the moral of the story is to move 64 disks,
+you use a procedure for moving 63 disks from the first peg to the second peg,
+move the largest disk to the third peg, and then reuse the procedure for
+moving 63 disks from the second peg to the third peg.
+And that's what we saw right here.
+The idea of this algorithm is very much like the idea of
+proof by mathematical induction.
+Again, you prove the correctness of a statement for a larger value of n,
+using assumptions about the correctness of the statement for smaller values of n.
+So in the Towers of Hanoi example, we move the top n-1 disks from rod A to rod B,
+we move the disk 1 from rod A to C, and move the n-1 disks from rod B to rod C.
+Now, you might ask how long do these moves take because the life of the world depends
+on understanding exactly the number of moves required to accomplish this task.
+We will talk about that in a little while.
+Let me give you another example where we solve larger problems from smaller
+problems but in a bottom up fashion.
+So we wanna solve the smallest problem first,
+then build up to a slightly bigger problem, and a slightly bigger problem and
+so on until we've solved the whole problem.
+An the illustrated example I'm going to use is insertion sort.
+It's one way of sorting an array of n numbers, what is the sorting problem?
+You're given an array of numbers and
+you want to put the numbers in ascending order.
+That's the problem of sorting.
+So as an example, we have this array here consisting of the numbers 5, 2,
+4, 6, 1 and 3.
+What we're gonna do is again we're gonna solve small problems and
+slowly increase the size of the problems we solved.
+We're going to sort every number to the left of the red line.
+So initially, we put the red line just after the first number.
+And of course, there's only one number to the left of the red line, and
+that number by itself is of course, sorted.
+So what happens when we move the red line one step to the right?
+Well, they've got a number 2, and 5 and 2 are not in sorted order.
+But we can then take the 2 and move it until it's in the right place.
+So move it leftwards until it's in the right place,
+which is what we have done here and now 2 and 5 are in sorted order.
+Continuing like this, we take the number 4 and move it
+leftwards until it's in the right place, which is between 2 and 5, and so on.
+So the number 6 is now pushed into the right place.
+The number 1 is pushed into the right place.
+And finally, the number 3 is pushed into the right place.
+Exactly, how is this accomplished using programming?
+So I'm not gonna show you a Java program.
+In this course, we're gonna use pseudocode because we want to get away
+from the detail to the syntax of any programming language.
+So here is the pseudocode for insertion sort.
+So let's look through the pseudocode a little bit.
+But the example of the analysis I showed you really already illustrates
+what we're doing.
+So for i equals 1 to length(A), think of i as the position of the red bar.
+So initially, it's at position 1, the leftmost point in the array is position 0,
+so it's at position 1.
+And we take j to be i, which means j is the element that's
+just to the right of the red bar at the moment.
+And we keep moving the element to the right of the red bar one step at a time,
+leftwards, until it's bigger than the element just before it.
+So while j greater than 0, A[j-1] > A [j] keep on swapping j with j-1.
+So that's what the algorithm is doing, and
+hopefully this example illustrates that pretty clearly.
+So, if you already sorted the first k elements of the array,
+how long does it take to place the next element?
+That's the question we need to answer to understand the running time of
+insertion sort.
+Well, if you sorted k elements and you're placing the k plus 1th element, we may
+have to move it leftwards as many as k places before it finds its rightful place.
+So if you sorted k elements, the next step could take k more steps.
+The next iteration or the outer loop could take k more steps.
+So we've seen two examples, both have the common property that in order to solve
+a big problem, we solved smaller problems, and then build up to the big solution.
+In the first example, we did this in a top-down fashion.
+In the second example, we did this in a bottom-up fashion.
+The question is, how do we understand the running time of these algorithms?
+And the tool we will use for
+doing that is something called recurrence relations, okay?
+So the running time of an algorithm is always expressed in terms
+of the length of the input.
+And we want to know how long an algorithm takes as the input length n
+keeps changing.
+So let's let T(n) be the number of operations that the Buddhist monks
+have to perform in order to move n disks from the first peg to the third
+peg following the rules that I mentioned before, only one disk can be
+moved one at a time and no disk can be placed on top of a smaller disk.
+So then T(n) is the time it takes to move n disks,
+T(n-1) is the number of operations to solve the Towers of Hanoi with n-1 disks.
+Then, if you recall the way we did the algorithm,
+you can see that we can write T(n) using T(n-1).
+The Towers of Hanoi recurrence is that in order to solve the problem of n disks,
+we first solve the problem of n-1 disks moving them from peg one to peg two,
+that takes T(n-1) time.
+Then we move the largest disk from peg one to peg three, that takes one step.
+And then we took all the n-1 disks from peg two and
+moved them to peg three, that takes T(n-1) steps again.
+And if you sum that up, it's T(n) = 2T(n- 1) + 1.
+So that's the recurrence relation.
+And how do we understand what is T(n) based on this recurrence relation?
+We use a technique called telescoping to expand T(n) and
+figure out what it actually is.
+So T(n) is 2T(n- 1) + 1.
+Now T(n-1) = 2T(n- 2) + 1,
+and continuing this manner,
+we get T(n) = 2(2T(n- 2) + 1) + 1.
+And I will just show you the further derivation on this slide.
+We got T(n) = 8T(n-3)+4+2+1 and so on.
+And finally, we get T(n)=2 to the k times
+T(n-k) + the summation shown here.
+So and ultimately, T(1), the time it takes to move one disk is just one step.
+So putting that all together, we get the T(n) = 2 to
+the n -1 + 2 to the n-1 -1 which is 2 the n -1.
+Try proving this derivation for
+yourself because once you understand how telescoping works,
+you should be able to derive this yourself if you didn't understand how we did it.
+So solving the Towers of Hanoi requires 2 to the n minus 1 operations.
+So thankfully for us, when n equals 64, 2 to the 64 minus 1,
+even if the Buddhist monks were able to move one disk per second,
+let's say, the number of seconds needed to do this is much longer
+than the time the universe has existed so far, so we are safe.
+So there is the recurrence explained again.
+Let's look at the other problem that we considered, insertion sort, and
+understand that as a recurrence So it's not exactly
+a top-down recursive algorithm, but we can still use a recurrence relation.
+So at the kth iteration,
+the first k-1 elements of the array are already in order.
+We may need to move the kth element k times.
+So the last iteration of the loop, at most n-1 swaps are required,
+so the kth iteration requires at most k-1 swaps.
+So putting it all together, total number of swaps of elements that might
+be needed is the sum from i equal to 0 to n of i-1.
+So which is just n(n-1) over 2.
+You could have written it using the recurrence relation t of n = t of n-1 + n.
+That would have given you the same answer.
